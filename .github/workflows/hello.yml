@@ -1,11 +1,30 @@
 name: Hello
-on: 
+
+on:
   workflow_dispatch:
 
 jobs:
-  say-hello:
+  code:
     runs-on: ubuntu-latest
-
     steps:
-      - name: say hello to evenryone
-        run: echo "hello dosto"
+      - name: clone the code
+        run: echo "cloning the code"
+
+  build:
+    needs: [code]
+    runs-on: ubuntu-latest
+    steps:
+      - name: running build
+        run: echo "running build"
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: running test
+        run: echo "running test"
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: running deploy
+        run: echo "running deploy"
